@@ -43,7 +43,15 @@ public class ArrCharOps {
      *  returns true; Otherwise returns false.
      */
     public static boolean equals(char[] arr1, char[] arr2) {
-        return arr1 == arr2;
+        if (arr1.length != arr2.length) {
+            return false;
+        }
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] != arr2[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /** Returns the index within the given array of the first occurrence of the given character.
@@ -89,7 +97,6 @@ public class ArrCharOps {
         for (int i = 0; i < arr2.length; i++) {
             result[arr1.length + i] = arr2[i];
         }
-    
         return result;
     }
     
@@ -100,20 +107,18 @@ public class ArrCharOps {
      *  characters containing the characters "urge".
      */     
     public static char[] subArray(char[] arr, int beginIndex, int endIndex) {
-        // Validate indices
+        // Handle invalid indices by returning null
         if (beginIndex < 0 || endIndex > arr.length || beginIndex >= endIndex) {
-            System.out.println("not");
+            return null;
         }
     
-        int count = endIndex - beginIndex;
-        char[] suba = new char[count];
-    
-        for (int i = 0; i < count; i++) {
+        char[] suba = new char[endIndex - beginIndex];
+        for (int i = 0; i < suba.length; i++) {
             suba[i] = arr[beginIndex + i];
         }
-    
         return suba;
     }
+    
     
 
 
@@ -158,40 +163,12 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-        if (str1.equals(str2))
-            return 0;
-        if (str1.length() != str2.length()){
-            for (int i = 0; i < Math.min(str1.length(), str2.length()); i++){
-                if (str1.charAt(i) > str2.charAt(i))
-                    return 1;
-                if (str1.charAt(i) < str2.charAt(i))
-                    return -1;
+        int minLength = Math.min(str1.length(), str2.length());
+        for (int i = 0; i < minLength; i++) {
+            if (str1.charAt(i) != str2.charAt(i)) {
+                return str1.charAt(i) - str2.charAt(i) > 0 ? 1 : -1;
             }
-            return -1;
         }
-        else{
-            for (int i = 0; i < Math.min(str1.length(), str2.length()); i++){
-                if (str1.charAt(i) > str2.charAt(i))
-                    return 1;
-                if (str1.charAt(i) < str2.charAt(i))
-                    return -1;
-        }
-    }
-    return -2;
+        return Integer.compare(str1.length(), str2.length());
     }
 } 
-
-/*        String news2 = str2;
-        if (str1.length() < str2.length()){
-            for (int i = str1.length(); i < str2.length(); i++){
-                news2.substring(i+1); }
-            if (str1.equals(news2))
-                return -1;  
-        }
-        for (int i = 0; i < str1.length(); i++){
-            if (str1.charAt(i) < str2.charAt(i))
-                return -1; 
-            if (str1.charAt(i) > str2.charAt(i))
-                return 1;
-    } */
-
