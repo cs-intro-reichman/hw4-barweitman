@@ -83,17 +83,16 @@ public class ArrCharOps {
     */
     public static char[] concat(char[] arr1, char[] arr2) {
         char[] result = new char[arr1.length + arr2.length];
-        int index = 0;
-
-        for (char c : arr1) {
-            result[index++] = c;
+        for (int i = 0; i < arr1.length; i++) {
+            result[i] = arr1[i];
         }
-        for (char c : arr2) {
-            result[index++] = c;
+        for (int i = 0; i < arr2.length; i++) {
+            result[arr1.length + i] = arr2[i];
         }
-
-        return result; 
+    
+        return result;
     }
+    
 
     /** Returns a new array that can be described as a sub-array of this array.
      *  The sub-array begins at the specified beginIndex and extends to the character at index endIndex - 1.
@@ -101,13 +100,21 @@ public class ArrCharOps {
      *  characters containing the characters "urge".
      */     
     public static char[] subArray(char[] arr, int beginIndex, int endIndex) {
+        // Validate indices
+        if (beginIndex < 0 || endIndex > arr.length || beginIndex >= endIndex) {
+            System.out.println("not");
+        }
+    
         int count = endIndex - beginIndex;
         char[] suba = new char[count];
+    
         for (int i = 0; i < count; i++) {
             suba[i] = arr[beginIndex + i];
         }
+    
         return suba;
-        }
+    }
+    
 
 
      /** Returns a single integer that represents the given array. This integer is sometimes 
