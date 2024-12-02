@@ -1,28 +1,33 @@
 public class Primes {
+    public static boolean IsPrime(int number){
+        if (number <= 1) {
+            return false;
+        }
+        if (number <= 3) {
+            return true;
+        }
+        if (number % 2 == 0 || number % 3 == 0) {
+            return false;
+        }
+        int i = 5;
+        while (i * i <= number) {
+            if (number % i == 0 || number % (i+2) == 0){
+                return false;
+            }
+            i += 6;
+        }
+        return true;
+    }
     public static void main(String[] args) {
         int N = Integer.parseInt(args[0]);
         int prim = 0;
-        int num = 2;
-        boolean isp = true;
-        while (N >= num){
-            if (num <= 1)
-                isp = false;
-            else if (num <= 3)
-                isp = true;
-            else {
-                if (num % 2 == 0 || num % 3 == 0)
-                isp = false;}
-            for (int i = num; i * i >= num; i++){
-                if (num % 1 == 0 || num % (i +2) == 0)
-                    isp = false;
-            }
-            if (isp){
-                System.out.println(num);
+        for(int i = 0; i <= N; i++){
+            if(IsPrime(i)){
                 prim++;
+                System.out.println(i);
             }
-           num++;
         }
-        double x = (double)prim / (N-1) * 100;
+        double x = (double)prim / N * 100;
         System.out.println("There are " + prim + " primes between 2 and " + N + " ("+ x + "% are primes)");
     }
-    }
+}
