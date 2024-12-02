@@ -166,9 +166,10 @@ public class ArrCharOps {
         int minLength = Math.min(str1.length(), str2.length());
         for (int i = 0; i < minLength; i++) {
             if (str1.charAt(i) != str2.charAt(i)) {
-                return str1.charAt(i) - str2.charAt(i) > 0 ? 1 : -1;
+                return str1.charAt(i) - str2.charAt(i); 
             }
         }
         return Integer.compare(str1.length(), str2.length());
     }
+    
 } 
