@@ -28,6 +28,6 @@ public class Primes {
             }
         }
         double x = (double)prim / N * 100;
-        System.out.println("There are " + prim + " primes between 2 and " + N + " ("+ x + "% are primes)");
+        System.out.println("There are " + prim + " primes between 2 and " + N + " ("+ (int)x + "% are primes)");
     }
 }
