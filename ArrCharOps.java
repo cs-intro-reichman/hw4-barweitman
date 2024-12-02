@@ -82,14 +82,17 @@ public class ArrCharOps {
     /* Returns an array which is the concatanation of the two given arrays.
     */
     public static char[] concat(char[] arr1, char[] arr2) {
-        char[] con = new char[arr1.length + arr2.length];
-        for (int i = 0; i < arr1.length; i++){
-            con[i] = arr1[i];
+        char[] result = new char[arr1.length + arr2.length];
+        int index = 0;
+
+        for (char c : arr1) {
+            result[index++] = c;
         }
-        for (int j = 0; j < arr2.length; j++){
-            con[arr1.length+j] = arr2[j];
+        for (char c : arr2) {
+            result[index++] = c;
         }
-        return con;
+
+        return result; 
     }
 
     /** Returns a new array that can be described as a sub-array of this array.
